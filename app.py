@@ -57,5 +57,7 @@ def get_progress():
 if not os.path.exists("/tmp"):
     os.makedirs("/tmp")
 
+# Final deployment-friendly run configuration
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))  # Use PORT from Render or default 10000
+    app.run(host='0.0.0.0', port=port)
