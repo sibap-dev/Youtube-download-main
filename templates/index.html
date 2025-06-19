@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        #loading, #progress-box {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        #loading {
+            color: green;
+        }
+        #progress-box {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- YouTube Logo -->
+        <img src="/static/youtube-logo.png" alt="YouTube Logo" class="logo">
+        
+        <h1>YouTube Video Downloader</h1>
+        <p>Enter the URL of the YouTube video you want to download:</p>
+        
+        <!-- Flash Messages -->
+        <div class="messages"></div>
+        
+        <!-- Form -->
+        <form method="POST" onsubmit="showLoading()">
+            <input type="url" name="video_url" placeholder="Paste YouTube link here" required>
+            <button type="submit">Download</button>
+        </form>
+
+        <!-- Loading and Progress -->
+        <div id="loading" style="display: none;">⏳ Downloading started...</div>
+        <div id="progress-box"></div>
+    </div>
+
+    <!-- Footer with your name -->
+    <footer>
+        <p>Created by <strong class="animated-name">Siba Prasad Padhi</strong></p>
+    </footer>
+
+    <script>
+        function showLoading() {
+            document.getElementById("loading").style.display = "block";
+            document.getElementById("progress-box").innerText = "";
+
+            const interval = setInterval(() => {
+                fetch('/progress')
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.error) {
+                            document.getElementById("progress-box").innerText = "❌ " + data.error;
+                            clearInterval(interval);
+                        } else if (data.progress === "Download complete") {
+                            document.getElementById("progress-box").innerText = "✅ Download complete!";
+                            clearInterval(interval);
+                        } else {
+                            document.getElementById("progress-box").innerText = "📥 " + data.progress;
+                        }
+                    });
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

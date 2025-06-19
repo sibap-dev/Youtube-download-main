@@ -1,0 +1,116 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff0000, #ff6f61); /* Red gradient background */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Container */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    z-index: 1;
+}
+
+/* YouTube Logo */
+.logo {
+    width: 100px; /* Adjust size as needed */
+    margin-bottom: 20px;
+}
+
+/* Heading */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333; /* Dark text color */
+}
+
+/* Input Field */
+input[type="url"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+}
+
+input[type="url"]:focus {
+    border-color: #ff0000; /* Red border on focus */
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* Button */
+button {
+    background-color: #ff0000; /* Red button */
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+/* Flash Messages */
+.messages {
+    color: #ff0000; /* Red error messages */
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff; /* White text color */
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Animated Name */
+.animated-name {
+    display: inline-block;
+    color: #ffcc00; /* Yellow color for your name */
+    font-weight: bold;
+    animation: colorChange 3s infinite, bounce 2s infinite;
+}
+
+/* Color Change Animation */
+@keyframes colorChange {
+    0% { color: #ffcc00; } /* Yellow */
+    25% { color: #00ffcc; } /* Cyan */
+    50% { color: #cc00ff; } /* Purple */
+    75% { color: #ff0066; } /* Pink */
+    100% { color: #ffcc00; } /* Yellow */
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
